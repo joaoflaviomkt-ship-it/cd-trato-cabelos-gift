@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trato Cabelos | Presente Dia dos Namorados</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #F8F1EC;
+      color: #241A18;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .background-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .glow-1, .glow-2, .glow-3 {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(70px);
+    }
+
+    .glow-1 {
+      width: 320px;
+      height: 320px;
+      background: rgba(212, 163, 115, 0.30);
+      top: -120px;
+      right: -90px;
+    }
+
+    .glow-2 {
+      width: 300px;
+      height: 300px;
+      background: rgba(232, 198, 186, 0.70);
+      top: 35%;
+      left: -120px;
+    }
+
+    .glow-3 {
+      width: 420px;
+      height: 420px;
+      background: rgba(255, 249, 246, 0.70);
+      bottom: -160px;
+      right: 22%;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
+      background: #5B1E2D;
+      color: #D4A373;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 18px 35px rgba(91, 30, 45, 0.25);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-icon span {
+      display: block;
+    }
+
+    .brand h3 {
+      font-size: 17px;
+      letter-spacing: 0.4px;
+    }
+
+    .brand p, .timer {
+      color: #7A5F5A;
+      font-size: 13px;
+    }
+
+    .timer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero {
+      display: grid;
+      overflow: hidden;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      min-height: 650px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 249, 246, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 999px;
+      padding: 10px 18px;
+      color: #7A5F5A;
+      font-size: 14px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(91, 30, 45, 0.06);
+    }
+
+    h1 {
+      font-size: clamp(36px, 7vw, 78px);
+      line-height: 0.96;
+      letter-spacing: -2px;
+      margin-bottom: 26px;
+      max-width: 720px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      line-height: 1.65;
+      color: #7A5F5A;
+      max-width: 620px;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    button, .whatsapp-button {
+      border: none;
+      cursor: pointer;
+      height: 56px;
+      padding: 0 30px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .primary-btn {
+      background: #5B1E2D;
+      color: #FFF9F6;
+      box-shadow: 0 18px 35px rgba(91, 30, 45, 0.25);
+    }
+
+    .primary-btn:hover {
+      background: #6F2638;
+      transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+      background: rgba(255, 249, 246, 0.6);
+      border: 1px solid #D4A373;
+      color: #241A18;
+    }
+
+    .secondary-btn:hover {
+      background: #FFF9F6;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 620px;
+    }
+
+    .step-card {
+      background: rgba(255, 249, 246, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 26px;
+      padding: 18px;
+      box-shadow: 0 14px 35px rgba(91, 30, 45, 0.06);
+    }
+
+    .step-card strong {
+      color: #D4A373;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .step-card span {
+      color: #7A5F5A;
+      font-size: 14px;
+    }
+
+    .phone-preview {
+      border-radius: 42px;
+      background: #5B1E2D;
+      padding: 16px;
+      box-shadow: 0 30px 80px rgba(91, 30, 45, 0.35);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .phone-inner {
+      min-height: 560px;
+      border-radius: 34px;
+      padding: 36px;
+      background: radial-gradient(circle at 30% 20%, rgba(212, 163, 115, 0.38), transparent 35%),
+                  radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.15), transparent 20%),
+                  linear-gradient(180deg, #6F2638, #241A18);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .phone-inner small {
+      color: #D4A373;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .phone-inner h2 {
+      font-size: 42px;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .phone-inner p {
+      color: rgba(255, 255, 255, 0.68);
+      line-height: 1.6;
+    }
+
+    .gift-mini-card {
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      padding: 26px;
+    }
+
+    .gift-mini-card .icon {
+      font-size: 34px;
+      margin-bottom: 18px;
+      color: #D4A373;
+    }
+
+    .page {
+      display: none;
+      animation: fadeUp 0.55s ease both;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .gift-page {
+      min-height: 650px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gift-page.active {
+      display: flex;
+    }
+
+    .gift-box-card {
+      width: 100%;
+      max-width: 720px;
+      background: rgba(255, 249, 246, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 42px;
+      box-shadow: 0 28px 80px rgba(91, 30, 45, 0.20);
+      padding: 48px;
+      text-align: center;
+    }
+
+    .big-gift {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 34px;
+      border-radius: 34px;
+      background: #5B1E2D;
+      color: #D4A373;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 88px;
+      box-shadow: 0 22px 55px rgba(91, 30, 45, 0.30);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .big-gift.opening {
+      animation: shake 0.9s ease;
+    }
+
+    .eyebrow {
+      color: #D4A373;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .gift-box-card h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      margin-bottom: 18px;
+    }
+
+    .gift-box-card p {
+      color: #7A5F5A;
+      font-size: 19px;
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto 34px;
+    }
+
+    .voucher-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 34px;
+      align-items: center;
+      min-height: 650px;
+    }
+
+    .voucher-card {
+      background: rgba(255, 249, 246, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 42px;
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(91, 30, 45, 0.18);
+    }
+
+    .voucher-header {
+      position: relative;
+      overflow: hidden;
+      background: #5B1E2D;
+      color: white;
+      padding: 42px;
+    }
+
+    .voucher-header::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -90px;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: rgba(212, 163, 115, 0.25);
+      filter: blur(45px);
+    }
+
+    .voucher-header small {
+      color: #D4A373;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .voucher-header h2 {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1;
+      margin: 18px 0;
+    }
+
+    .voucher-header p {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    .voucher-body {
+      padding: 36px 42px 42px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .info-card {
+      background: #F8F1EC;
+      border-radius: 26px;
+      padding: 22px;
+    }
+
+    .info-card .icon {
+      color: #D4A373;
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .info-card strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .info-card span {
+      color: #7A5F5A;
+      font-size: 14px;
+    }
+
+    .redeem-box {
+      border: 1px dashed #D4A373;
+      border-radius: 28px;
+      background: #FFF9F6;
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+
+    .redeem-box small {
+      color: #7A5F5A;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .redeem-box p {
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .blank-side {
+      min-height: 300px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0) scale(1); }
+      20% { transform: rotate(-8deg) scale(1.04); }
+      40% { transform: rotate(8deg) scale(1.08); }
+      60% { transform: rotate(-6deg) scale(1.04); }
+      80% { transform: rotate(6deg) scale(1.02); }
+    }
+
+    @media (max-width: 900px) {
+      .hero, .voucher-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-preview {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .timer {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 42px;
+        line-height: 0.98;
+        letter-spacing: -1.5px;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+
+      .subtitle {
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      .tag {
+        max-width: 100%;
+        font-size: 12px;
+        padding: 8px 14px;
+        white-space: normal;
+      }
+
+      .container {
+        padding: 24px 16px;
+      }
+
+      header {
+        margin-bottom: 32px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .steps, .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      button, .whatsapp-button {
+        width: 100%;
+      }
+
+      .phone-inner {
+        min-height: 500px;
+        padding: 28px;
+      }
+
+      .gift-box-card, .voucher-body, .voucher-header {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-glow">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    <div class="glow-3"></div>
+  </div>
+
+  <main class="container">
+    <header>
+      <div class="brand">
+        <div class="brand-icon">
+          <!-- Coloque sua logo na mesma pasta do index.html com o nome logo.png -->
+          <img src="logo.png" alt="Logo Trato Cabelos" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+          <span>✦</span>
+        </div>
+        <div>
+          <h3>Trato Cabelos</h3>
+          <p>Especial Dia dos Namorados</p>
+        </div>
+      </div>
+      <div class="timer">⏰ Presente válido por tempo limitado</div>
+    </header>
+
+    <section id="landing" class="page active">
+      <div class="hero">
+        <div>
+          <div class="tag">👑 Campanha especial de Dia dos Namorados</div>
+          <h1>Um presente especial para celebrar o amor.</h1>
+          <p class="subtitle">
+            O Trato Cabelos preparou uma experiência romântica e exclusiva para deixar o Dia dos Namorados ainda mais inesquecível.
+          </p>
+
+          <div class="buttons">
+            <button class="primary-btn" onclick="showPage('gift')">🎁 Ganhe seu presente agora</button>
+            <button class="secondary-btn" onclick="showPage('gift')">Ver como funciona</button>
+          </div>
+
+          <div class="steps">
+            <div class="step-card">
+              <strong>01</strong>
+              <span>Clique no botão</span>
+            </div>
+            <div class="step-card">
+              <strong>02</strong>
+              <span>Abra sua surpresa</span>
+            </div>
+            <div class="step-card">
+              <strong>03</strong>
+              <span>Agende no WhatsApp</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-preview">
+          <div class="phone-inner">
+            <div>
+              <small>Valentine Gift</small>
+              <h2>Abra seu presente romântico</h2>
+              <p>Um mimo especial para celebrar amor, autoestima e beleza em um momento único.</p>
+            </div>
+            <div class="gift-mini-card">
+              <div class="icon">✂️</div>
+              <h3>Voucher Especial dos Namorados</h3>
+              <p>Clique para descobrir seu benefício exclusivo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gift" class="gift-page page">
+      <div class="gift-box-card">
+        <div id="giftIcon" class="big-gift">🎁</div>
+        <div class="eyebrow">Especial Dia dos Namorados</div>
+        <h2>Seu presente romântico chegou</h2>
+        <p>Clique abaixo para revelar sua experiência especial de Dia dos Namorados.</p>
+        <button class="primary-btn" onclick="openGift()">✨ Revelar meu presente</button>
+      </div>
+    </section>
+
+    <section id="voucher" class="page">
+      <div class="voucher-layout">
+        <div class="voucher-card">
+          <div class="voucher-header">
+            <small>Voucher Dia dos Namorados</small>
+            <h2>Hidratação Glow + Finalização + Unhas Românticas</h2>
+            <p>
+              Você desbloqueou um presente exclusivo para viver uma experiência completa de beleza e autocuidado neste Dia dos Namorados.
+            </p>
+          </div>
+
+          <div class="voucher-body">
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="icon">📅</div>
+                <strong>Validade</strong>
+                <span>20 dias após abertura</span>
+              </div>
+              <div class="info-card">
+                <div class="icon">👑</div>
+                <strong>Categoria</strong>
+                <span>Love Experience</span>
+              </div>
+              <div class="info-card">
+                <div class="icon">▦</div>
+                <strong>Código</strong>
+                <span>GLOW-2847</span>
+              </div>
+            </div>
+
+            <div class="redeem-box">
+              <small>Como resgatar</small>
+              <p>Clique em “Agendar meu presente” e envie o código pelo WhatsApp do salão.</p>
+            </div>
+
+            <div class="buttons">
+              <a class="whatsapp-button primary-btn" target="_blank" href="https://wa.me/5586988485848?text=Oi%21%20Ganhei%20um%20voucher%20especial%20no%20site%20e%20quero%20agendar%20meu%20presente%20%E2%9C%A8%20C%C3%B3digo%3A%20GLOW-2847">
+                💬 Agendar meu presente
+              </a>
+              <button class="secondary-btn" onclick="showPage('landing')">Voltar ao início</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="blank-side"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+      });
+
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openGift() {
+      const giftIcon = document.getElementById('giftIcon');
+      giftIcon.classList.add('opening');
+
+      setTimeout(function() {
+        showPage('voucher');
+        giftIcon.classList.remove('opening');
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
