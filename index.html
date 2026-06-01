@@ -475,6 +475,68 @@
       min-height: 300px;
     }
 
+
+    .choice-section {
+      margin: 28px 0 34px;
+      max-width: 780px;
+    }
+
+    .choice-title {
+      color: #7A5F5A;
+      font-size: 15px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .choice-card {
+      background: rgba(255, 249, 246, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 26px;
+      padding: 20px;
+      box-shadow: 0 14px 35px rgba(91, 30, 45, 0.06);
+    }
+
+    .choice-card.combo-card {
+      border: 1px solid #D4A373;
+      background: rgba(255, 249, 246, 0.86);
+    }
+
+    .choice-card h3 {
+      color: #5B1E2D;
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .choice-card p {
+      color: #7A5F5A;
+      font-size: 14px;
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+
+    .choice-card .discount {
+      display: inline-block;
+      color: #5B1E2D;
+      border: 1px dashed #D4A373;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .mini-btn {
+      height: 44px;
+      padding: 0 18px;
+      font-size: 14px;
+    }
+
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
@@ -541,7 +603,7 @@
         min-height: auto;
       }
 
-      .steps, .info-grid {
+      .steps, .info-grid, .choice-grid {
         grid-template-columns: 1fr;
       }
 
@@ -601,6 +663,31 @@
             <button class="secondary-btn" onclick="showPage('gift')">Ver como funciona</button>
           </div>
 
+
+          <div class="choice-section">
+            <div class="choice-title">Escolha para quem deseja presentear:</div>
+            <div class="choice-grid">
+              <div class="choice-card">
+                <h3>👩 Para Elas</h3>
+                <p>Beleza, autoestima e cuidado em um presente inesquecível.</p>
+                <button class="primary-btn mini-btn" onclick="showPage('gift')">Ver cartão feminino</button>
+              </div>
+
+              <div class="choice-card">
+                <h3>👨 Para Eles</h3>
+                <p>Corte e barba para uma experiência de estilo e cuidado pessoal.</p>
+                <button class="primary-btn mini-btn" onclick="showPage('giftMale')">Ver cartão masculino</button>
+              </div>
+
+              <div class="choice-card combo-card">
+                <h3>❤️ Combo Casal</h3>
+                <p>Uma opção especial para presentear os dois.</p>
+                <span class="discount">5% OFF à vista ou no PIX</span>
+                <button class="primary-btn mini-btn" onclick="showPage('combo')">Ver combo casal</button>
+              </div>
+            </div>
+          </div>
+
           <div class="steps">
             <div class="step-card">
               <strong>01</strong>
@@ -641,6 +728,17 @@
         <h2>Seu presente romântico chegou</h2>
         <p>Clique abaixo para revelar sua experiência especial de Dia dos Namorados.</p>
         <button class="primary-btn" onclick="openGift()">✨ Revelar meu presente</button>
+      </div>
+    </section>
+
+
+    <section id="giftMale" class="gift-page page">
+      <div class="gift-box-card">
+        <div id="giftIconMale" class="big-gift">🎁</div>
+        <div class="eyebrow">Especial Dia dos Namorados</div>
+        <h2>Seu presente masculino chegou</h2>
+        <p>Clique abaixo para revelar sua experiência especial de barbearia.</p>
+        <button class="primary-btn" onclick="openGiftMale()">✨ Revelar cartão masculino</button>
       </div>
     </section>
 
@@ -691,6 +789,107 @@
         <div class="blank-side"></div>
       </div>
     </section>
+
+    <section id="voucherMale" class="page">
+      <div class="voucher-layout">
+        <div class="voucher-card">
+          <div class="voucher-header">
+            <small>Voucher Masculino Dia dos Namorados</small>
+            <h2>Corte Masculino + Barba</h2>
+            <p>
+              Uma experiência de estilo, confiança e cuidado pessoal para presentear de forma diferente neste Dia dos Namorados.
+            </p>
+          </div>
+
+          <div class="voucher-body">
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="icon">📅</div>
+                <strong>Validade</strong>
+                <span>20 dias após abertura</span>
+              </div>
+              <div class="info-card">
+                <div class="icon">🧔</div>
+                <strong>Categoria</strong>
+                <span>Vale Barbearia</span>
+              </div>
+              <div class="info-card">
+                <div class="icon">▦</div>
+                <strong>Código</strong>
+                <span>BARBA-2026</span>
+              </div>
+            </div>
+
+            <div class="redeem-box">
+              <small>Como resgatar</small>
+              <p>Clique em “Agendar cartão masculino” e envie o código pelo WhatsApp da barbearia.</p>
+            </div>
+
+            <div class="buttons">
+              <a class="whatsapp-button primary-btn" target="_blank" href="https://wa.me/5586998230254?text=Oi%21%20Tenho%20interesse%20no%20Cart%C3%A3o%20Presente%20Masculino%20com%20corte%20e%20barba%20para%20o%20Dia%20dos%20Namorados.%20C%C3%B3digo%3A%20BARBA-2026">
+                💬 Agendar cartão masculino
+              </a>
+              <button class="secondary-btn" onclick="showPage('landing')">Voltar ao início</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="blank-side"></div>
+      </div>
+    </section>
+
+
+    <section id="combo" class="page">
+      <div class="voucher-layout">
+        <div class="voucher-card">
+          <div class="voucher-header">
+            <small>Combo Casal Dia dos Namorados</small>
+            <h2>Voucher Feminino + Voucher Masculino</h2>
+            <p>
+              Uma experiência especial para os dois: beleza, cuidado, autoestima e estilo em um presente romântico.
+            </p>
+          </div>
+
+          <div class="voucher-body">
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="icon">👩</div>
+                <strong>Para Elas</strong>
+                <span>Experiência feminina</span>
+              </div>
+              <div class="info-card">
+                <div class="icon">👨</div>
+                <strong>Para Eles</strong>
+                <span>Corte + barba</span>
+              </div>
+              <div class="info-card">
+                <div class="icon">🎁</div>
+                <strong>Benefício</strong>
+                <span>5% OFF à vista ou PIX</span>
+              </div>
+            </div>
+
+            <div class="redeem-box">
+              <small>Como solicitar</small>
+              <p>Escolha abaixo com quem deseja falar e envie a mensagem do Combo Casal pelo WhatsApp.</p>
+            </div>
+
+            <div class="buttons">
+              <a class="whatsapp-button primary-btn" target="_blank" href="https://wa.me/5586988485848?text=Oi%21%20Tenho%20interesse%20no%20Combo%20Casal%20do%20Cart%C3%A3o%20Presente%20Dia%20dos%20Namorados%20com%205%25%20OFF%20%C3%A0%20vista%20ou%20no%20PIX.">
+                💬 Falar com salão feminino
+              </a>
+              <a class="whatsapp-button primary-btn" target="_blank" href="https://wa.me/5586998230254?text=Oi%21%20Tenho%20interesse%20no%20Combo%20Casal%20do%20Cart%C3%A3o%20Presente%20Dia%20dos%20Namorados%20com%205%25%20OFF%20%C3%A0%20vista%20ou%20no%20PIX.">
+                💬 Falar com barbearia
+              </a>
+              <button class="secondary-btn" onclick="showPage('landing')">Voltar ao início</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="blank-side"></div>
+      </div>
+    </section>
+
   </main>
 
   <script>
@@ -710,6 +909,16 @@
       setTimeout(function() {
         showPage('voucher');
         giftIcon.classList.remove('opening');
+      }, 1000);
+    }
+
+    function openGiftMale() {
+      const giftIconMale = document.getElementById('giftIconMale');
+      giftIconMale.classList.add('opening');
+
+      setTimeout(function() {
+        showPage('voucherMale');
+        giftIconMale.classList.remove('opening');
       }, 1000);
     }
   </script>
